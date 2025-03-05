@@ -13,7 +13,7 @@ function FavoriteList({ selectedDogs, setSelectedDogs }) {
   const matchUrl = "https://frontend-take-home-service.fetch.com/dogs/match";
 
   useEffect(() => {
-    console.log(Ids);
+    console.log("Ids", Ids);
   }, [selectedDogs]);
 
   function handleRemove(id) {
@@ -92,9 +92,9 @@ function FavoriteList({ selectedDogs, setSelectedDogs }) {
           Match
         </button>
       </div>
-      {matchModal && (
+      {matchModal && matchedDog && (
         <MatchModal
-        matchedDog={matchedDog}
+          matchedDog={matchedDog}
           handleModalTrigger={handleModalTrigger}
         />
       )}

@@ -47,7 +47,8 @@ function DogCardsContainer({ searchValue, searchType }) {
 
         // Render the main information first, then fetch the address data
         const zipCodes = dogData.map((dog) => dog.zip_code);
-        const locatUrl = "https://frontend-take-home-service.fetch.com/locations";
+        const locatUrl =
+          "https://frontend-take-home-service.fetch.com/locations";
         return fetch(locatUrl, {
           method: "POST",
           credentials: "include",

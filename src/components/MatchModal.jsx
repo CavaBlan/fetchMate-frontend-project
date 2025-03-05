@@ -5,8 +5,16 @@ function MatchModal({ matchedDog, handleModalTrigger }) {
 
   return (
     // overlay -> box -> matched dog
-    <div className="bg-amber-100/90 fixed inset-0 flex justify-center items-center">
-      <div className="h-150 w-130 bg-amber-50/90 border border-orange-300 rounded-2xl flex flex-col items-center">
+    <div
+      className="bg-amber-100/90 fixed inset-0 flex justify-center items-center"
+      onClick={() => {
+        handleModalTrigger();
+      }}
+    >
+      <div
+        className="h-150 w-130 bg-amber-50/90 border border-orange-300 rounded-2xl flex flex-col items-center"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="mt-10 mb-10 text-5xl text-orange-500">
           Congratulation!
         </div>

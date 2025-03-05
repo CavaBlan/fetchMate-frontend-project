@@ -3,11 +3,13 @@
 This is a frontend web application built with **Vite + React** for Fetch's Take-Home Exercise. The app allows users to search for adoptable shelter dogs, filter them by breed, sort results, and select favorites to generate a match.
 
 ## **Tech Stack**
+
 - **Vite**
-- **React** 
+- **React**
 - **Tailwind CSS**
 - **React-Select**
-- **Fetch API** 
+- **Router**
+- **Fetch API**
 - **Vercel**
 
 1. Clone git clone https://github.com/CavaBlan/fetchMate-frontend-project.git cd fetchMate-frontend-project
