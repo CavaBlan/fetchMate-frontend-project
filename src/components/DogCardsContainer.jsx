@@ -65,8 +65,8 @@ function DogCardsContainer({ searchValue, searchType }) {
             setDogs((prev) =>
               prev.map((dog, index) => ({
                 ...dog,
-                city: location[index].city,
-                state: location[index].state,
+                city: location[index]?.city || "Unknown",
+                state: location[index]?.state || "Unknown",
               }))
             );
           });
