@@ -10,8 +10,10 @@ This is a frontend web application built with **Vite + React** for Fetch's Take-
 - **Fetch API** 
 - **Vercel**
 
-1.Clone git clone https://github.com/CavaBlan/fetchMate-frontend-project.git cd fetchMate-frontend-project
-2.Install Dependency npm install
-3.Run the Server npm run dev
+1. Clone git clone https://github.com/CavaBlan/fetchMate-frontend-project.git cd fetchMate-frontend-project
+
+2. Install Dependency npm install
+
+3. Run the Server npm run dev
 
 You can enter the fullname and email address as you please.
