@@ -32,7 +32,7 @@ function SearchBar({ searchType, setSearchType, setSearchValue }) {
           setOptions(allOptions);
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
           alert(err);
         });
     } else {

@@ -71,7 +71,7 @@ function DogCardsContainer({ searchValue, searchType }) {
             );
           });
       })
-      .catch((err) => console(err))
+      .catch((err) => console.error(err))
       .finally(() => {
         setIsLoading(false);
       });

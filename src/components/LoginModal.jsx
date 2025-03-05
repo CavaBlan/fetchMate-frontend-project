@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HomeLogo from "./HomeLogo";
 
@@ -21,11 +21,13 @@ function LoginModal() {
       body: JSON.stringify({ name: userInfo.fullName, email: userInfo.email }),
     })
       .then((res) => {
-        if (!res.ok) return Promise.reject("Login failed");
+        if (!res.ok) {
+          alert("Login failed");
+        }
         navigate("/search");
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         alert(err);
       });
   }
@@ -37,7 +39,10 @@ function LoginModal() {
         <h2 className="pt-15 p-5 font-mono text-center text-5xl text-orange-500">
           Your Infromation
         </h2>
-        <form className=" w-2/3 flex items-center flex-col" onSubmit={handleLogin}>
+        <form
+          className=" w-2/3 flex items-center flex-col"
+          onSubmit={handleLogin}
+        >
           <input
             type="text"
             className="mt-10 w-full rounded-2xl border p-3 text-center"
