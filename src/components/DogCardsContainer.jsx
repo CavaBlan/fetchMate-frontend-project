@@ -9,6 +9,7 @@ function DogCardsContainer({ searchValue, searchType }) {
   const [selectedDogs, setSelectedDogs] = useState([]);
   const [dogs, setDogs] = useState([]);
   const [sortType, setSoryType] = useState("breed:asc");
+  const [isLoading, setIsLoading] = useState(true);
 
   const maxPage = Math.ceil(totalDogs / 16);
 
@@ -17,6 +18,8 @@ function DogCardsContainer({ searchValue, searchType }) {
   }, [selectedDogs]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     // If the user does not select, all dogs are displayed by default
     const query = searchValue ? `${searchType}=${searchValue}` : "";
     const apiUrl = `https://frontend-take-home-service.fetch.com/dogs/search?${query}&size=16&from=${
@@ -68,7 +71,10 @@ function DogCardsContainer({ searchValue, searchType }) {
             );
           });
       })
-      .catch((err) => console(err));
+      .catch((err) => console(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [page, searchType, searchValue, sortType]);
 
   function handleSelect(dog) {
@@ -86,14 +92,19 @@ function DogCardsContainer({ searchValue, searchType }) {
     <section className="w-full flex justify-center">
       <div className="w-8/12">
         <SortSelector setSoryType={setSoryType} />
-        <div className="mt-5 grid grid-cols-4 gap-3 place-items-center">
-          {/* {Array.from({ length: 16 }, (_, index) => (
+        {isLoading ? (
+          <div className="h-200 m-5  flex justify-center"><div className="mt-50 text-orange-600 text-8xl">Loading...</div></div>
+        ) : (
+          <div className="mt-5 grid grid-cols-4 gap-3 place-items-center">
+            {/* {Array.from({ length: 16 }, (_, index) => (
             <DogCard key={index} />
           ))} */}
-          {dogs.map((dog, index) => (
-            <DogCard key={index} dog={dog} handleSelect={handleSelect} />
-          ))}
-        </div>
+            {dogs.map((dog, index) => (
+              <DogCard key={index} dog={dog} handleSelect={handleSelect} />
+            ))}
+          </div>
+        )}
+
         <div className="flex justify-center gap-10 mb-10">
           <button
             className="p-2 text-3xl hover:scale-105 transition cursor-pointer text-white bg-orange-300 rounded-2xl"
