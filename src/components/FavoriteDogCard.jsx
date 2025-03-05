@@ -9,8 +9,7 @@
 
 function FavoriteDogCard({dogInfo, handleRemove}) {
   //Remember to change the name
-  const { id, img, name, age, zip_code, breed } = dogInfo;
-
+  const { id, img, name, age, zip_code, breed, city, state } = dogInfo;
 
   return (
     //box
@@ -22,15 +21,15 @@ function FavoriteDogCard({dogInfo, handleRemove}) {
           <img className="h-15 w-15 mx-2 bg-white rounded-2xl" src={img} alt="" />
         </div>
         <div className="m-3">
-          <div className="text-2xl">
+          <div className="text-2xl font-bold">
             {name} 
           </div>
-          <div>{zip_code}</div>
+          <div>{city} · {state}</div>
         </div>
       </div>
       {/* right side */}
       <div className="ml-auto mx-7">
-        <button className="cursor-pointer " onClick={()=>handleRemove(id)}>Remove</button>
+        <button className="p-2 bg-orange-600 text-white rounded-2xl hover:scale-105 cursor-pointer" onClick={()=>handleRemove(id)}>Remove</button>
       </div>
     </div>
   );

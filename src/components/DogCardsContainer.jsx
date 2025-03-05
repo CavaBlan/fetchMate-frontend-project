@@ -23,6 +23,7 @@ function DogCardsContainer({ searchValue, searchType }) {
       (page - 1) * 16
     }&sort=${sortType}`;
 
+    //Fetch dogs ID
     fetch(apiUrl, {
       method: "GET",
       credentials: "include",
@@ -31,6 +32,7 @@ function DogCardsContainer({ searchValue, searchType }) {
       .then((data) => {
         console.log(data);
         setTotalDogs(data.total);
+        // Fetch dogs information through id
         return fetch("https://frontend-take-home-service.fetch.com/dogs", {
           method: "POST",
           credentials: "include",
@@ -41,7 +43,29 @@ function DogCardsContainer({ searchValue, searchType }) {
       .then((res) => res.json())
       .then((dogData) => {
         setDogs(dogData);
-        console.log(dogData);
+        // console.log(dogData);
+
+        // Render the main information first, then fetch the address data
+        const zipCodes = dogData.map((dog) => dog.zip_code);
+        const locatUrl = "https://frontend-take-home-service.fetch.com/locations";
+        return fetch(locatUrl, {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(zipCodes),
+        })
+          .then((res) => res.json())
+          .then((location) => {
+            // console.log(locations);
+            //marge city and state to dogs
+            setDogs((prev) =>
+              prev.map((dog, index) => ({
+                ...dog,
+                city: location[index].city,
+                state: location[index].state,
+              }))
+            );
+          });
       })
       .catch((err) => console(err));
   }, [page, searchType, searchValue, sortType]);
@@ -60,7 +84,7 @@ function DogCardsContainer({ searchValue, searchType }) {
   return (
     <section className="w-full flex justify-center">
       <div className="w-8/12">
-        <SortSelector setSoryType={setSoryType}/>
+        <SortSelector setSoryType={setSoryType} />
         <div className="mt-5 grid grid-cols-4 gap-3 place-items-center">
           {/* {Array.from({ length: 16 }, (_, index) => (
             <DogCard key={index} />

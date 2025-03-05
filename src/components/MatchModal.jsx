@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function MatchModal({ matchedDog, handleModalTrigger }) {
   const [dogInfo, setDogInfo] = useState(matchedDog);
 
@@ -13,9 +12,7 @@ function MatchModal({ matchedDog, handleModalTrigger }) {
         </div>
         <div className="text-3xl flex flex-col items-center gap-3">
           <img className="h-50 w-50 mb-5 border" src={dogInfo.img} alt="Dog" />
-          <div className="text-5xl text-orange-500">
-            {dogInfo.name}
-          </div>
+          <div className="text-5xl text-orange-500">{dogInfo.name}</div>
           <div>{dogInfo.position}</div>
         </div>
         <div className="mt-10">
@@ -28,7 +25,13 @@ function MatchModal({ matchedDog, handleModalTrigger }) {
           >
             Cancel
           </button>
-          <button className="p-3 mx-3 text-3xl text-white bg-orange-300 rounded-3xl cursor-pointer hover:scale-105 transition">
+          <button
+            className="p-3 mx-3 text-3xl text-white bg-orange-300 rounded-3xl cursor-pointer hover:scale-105 transition"
+            onClick={() => {
+              alert("We will (not) contact you soon!");
+              handleModalTrigger();
+            }}
+          >
             Continue
           </button>
         </div>
