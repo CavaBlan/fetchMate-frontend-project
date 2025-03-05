@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import "./globals.css";
-import Search from "./pages/search";
+import Search from "./pages/Search";
 import Home from "./pages/Home";
 
 function App() {
