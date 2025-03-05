@@ -37,7 +37,7 @@ function LoginModal() {
       <HomeLogo />
       <div className="mb-20 flex w-200 h-125 flex-col items-center rounded-4xl bg-white p-2 shadow-lg">
         <h2 className="pt-15 p-5 font-mono text-center text-5xl text-orange-500">
-          Your Infromation
+          Your Information
         </h2>
         <form
           className=" w-2/3 flex items-center flex-col"
