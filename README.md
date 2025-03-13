@@ -4,6 +4,8 @@ This is a frontend web application built with **Vite + React** for Fetch's Take-
 
 ## **Tech Stack**
 
+**Vercel:** https://fetch-mate-frontend-project.vercel.app/
+
 - **Vite**
 - **React**
 - **Tailwind CSS**
